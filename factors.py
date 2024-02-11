@@ -4,21 +4,12 @@ import sys
 
 def factorize(number):
     factors = []
-    for i in range(2, int(number**0.5) + 1):
-        while number % i == 0:
+    for i in range(2, number // 2 + 1):
+        if number % i == 0:
             factors.append((i, number // i))
-            n //= i
-    if n > 1:
-        factors.appen((n, 1))
-    return factors
+    return (factors)
 
-def main():
-    if len(sys.argv) != 2:
-        print("Usage: factors <file>")
-        sys.exit(1)
-
-    input_file = sys.argv[1]
-
+def main(filename):
     with open(input_file, 'r') as file:
         for line in file:
             number = int(line.strip())
@@ -28,5 +19,9 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    if len(sys.argv) != 2:
+        print("Usage: factor <file>")
+        sys.exit(1)
+    filename = sys.argv[1]
+    main(filename)
 
