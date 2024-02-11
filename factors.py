@@ -2,25 +2,25 @@
 
 import sys
 
-def factorize(number):
+def factorize(num):
     factors = []
-    for i in range(2, number // 2 + 1):
-        if number % i == 0:
-            factors.append((i, number // i))
+    for i in range(2, num // 2 + 1):
+        if num % i == 0:
+            factors.append((i, num // i))
     return (factors)
 
 def main(filename):
-    with open(input_file, 'r') as file:
+    with open(filename, 'r') as file:
         for line in file:
-            number = int(line.strip())
-            factor_pairs = factorize(number)
+            num = int(line.strip())
+            factor_pairs = factorize(num)
             for pair in factor_pairs:
-                print(f"{number}={pair[0]}*{pair[1]}")
+                print(f"{num}={pair[0]}*{pair[1]}")
 
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
-        print("Usage: factor <file>")
+        print("Usage: factor number")
         sys.exit(1)
     filename = sys.argv[1]
     main(filename)
